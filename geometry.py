@@ -56,7 +56,7 @@ class Point(object):
     """A class representing a point or a vector."""
 
     ## Point constructor.
-    def __init__(self, x, y, z = 0.0):
+    def __init__(self, x, y, z):
         ## X coordinate
         self.x = x
         ## Y coordinate
@@ -371,6 +371,7 @@ class Polygon(object):
         self.r = r
         self.g = g
         self.b = b
+        self.nail = Point(0,0,0)
 
     def __repr__(self):
         """String representation of this polygon.""" 

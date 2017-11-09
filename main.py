@@ -17,14 +17,15 @@ dragging = False
 activePolygon = []
 allPolygons = []
 allPoints = []
-actualPoint = Point(0,0)
+actualPoint = Point(0,0,0)
+nails = []
 
 class Line:
 	def __init__(self, pontoA):
 		self.pontoA = pontoA
-		self.pontoB = Point(pontoA.x, pontoA.y)
+		self.pontoB = Point(pontoA.x, pontoA.y,0)
 
-tempLine = Line(Point(0,0))
+tempLine = Line(Point(0,0,0))
 
 def changeSize(w, h):
 	if(h == 0):
@@ -52,7 +53,11 @@ def getMouse(button, state, x, y):
 	global tempLine
 	global actualPoint
 	if (button == GLUT_LEFT_BUTTON and state == GLUT_DOWN):
-		actualPoint = Point(x,y)
+		actualPoint = Point(x,y,0)
+		if len(activePolygon) == 0:
+			for poly in allPolygons:
+				if poly.contains(actualPoint):
+					return
 		clicked = True
 		tempLine = Line(actualPoint)
 		activePolygon.append(actualPoint)
@@ -62,7 +67,7 @@ def getMouse(button, state, x, y):
 			del allPoints[-1]
 			activePolygon[-1] = activePolygon[0]
 			clicked = False
-			tempLine = Line(Point(0,0))
+			tempLine = Line(Point(0,0,0))
 			poly = Polygon(activePolygon[:], numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0))
 			if(poly.isConvex()):
 				print("Convexo")
@@ -71,17 +76,30 @@ def getMouse(button, state, x, y):
 			allPolygons.append(poly)
 			del activePolygon[:]
 
+	elif (button == GLUT_RIGHT_BUTTON and state == GLUT_DOWN):
+		print('Clique com o botao direito')
+		actualPoint = Point(x,y,1)
+		nails.append(actualPoint)
+		for poly in allPolygons:
+			if poly.contains(actualPoint):
+				poly.nail = actualPoint
+				return
+
+
 def mouseMotion(x,y):
 	firstClick = actualPoint
-	dragPoint = Point(x,y)
+	dragPoint = Point(x,y,0)
+	global dragging
 	for poly in allPolygons:
 		if poly.contains(dragPoint):
+			dragging = True
 			distx = dragPoint.x - firstClick.x
 			disty = dragPoint.y - firstClick.y
 			for point in poly.points:
 				point.x = point.x + distx
 				point.y = point.y + disty
 	glutPostRedisplay()
+	dragging = False
 
 
 def renderScene ():
@@ -90,6 +108,12 @@ def renderScene ():
 	glMatrixMode (GL_PROJECTION)
 	gluOrtho2D (0.0, screenW, screenH, 0.0)
 	glLineWidth(3.0)
+	glColor3f(0,0,0)
+	glPointSize(10)
+	glBegin(GL_POINTS)
+	for nail in nails:
+		glVertex3f(nail.x, nail.y, 0)
+	glEnd()
 	glBegin(GL_LINES)
 	for i in range(1, len(activePolygon)):
 		glColor3f(0, 0, 0)

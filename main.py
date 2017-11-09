@@ -5,6 +5,7 @@ import sys
 import random
 import numpy
 from geometry import *
+from tessellator import *
 
 
 screenW = 640 
@@ -12,10 +13,11 @@ screenH = 480
 
 
 clicked = False
+dragging = False
 activePolygon = []
 allPolygons = []
 allPoints = []
-colors = []
+actualPoint = Point(0,0)
 
 class Line:
 	def __init__(self, pontoA):
@@ -48,6 +50,7 @@ def getMouse(button, state, x, y):
 	global allPoints
 	global clicked
 	global tempLine
+	global actualPoint
 	if (button == GLUT_LEFT_BUTTON and state == GLUT_DOWN):
 		actualPoint = Point(x,y)
 		clicked = True
@@ -55,7 +58,7 @@ def getMouse(button, state, x, y):
 		activePolygon.append(actualPoint)
 		allPoints.append(actualPoint)
 
-		if len(activePolygon) > 2 and activePolygon[-1].dist(activePolygon[0]) <= 50:
+		if len(activePolygon) > 2 and activePolygon[-1].dist(activePolygon[0]) <= 10:
 			del allPoints[-1]
 			activePolygon[-1] = activePolygon[0]
 			clicked = False
@@ -64,50 +67,45 @@ def getMouse(button, state, x, y):
 			if(poly.isConvex()):
 				print("Convexo")
 			print("Adicionou Polygon\n")
+			tessellate(poly)
 			allPolygons.append(poly)
 			del activePolygon[:]
 
-def renderScene():
+def mouseMotion(x,y):
+	firstClick = actualPoint
+	dragPoint = Point(x,y)
+	for poly in allPolygons:
+		if poly.contains(dragPoint):
+			distx = dragPoint.x - firstClick.x
+			disty = dragPoint.y - firstClick.y
+			for point in poly.points:
+				point.x = point.x + distx
+				point.y = point.y + disty
+	glutPostRedisplay()
+
+
+def renderScene ():
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glPushMatrix()
 	glMatrixMode (GL_PROJECTION)
 	gluOrtho2D (0.0, screenW, screenH, 0.0)
-	glPointSize(5.0)
-
-	for polygon in allPolygons:
-		glBegin(GL_POLYGON)	
-
-		if(False):
-			for polygonPoint in polygon.points:
-				#glColor3f(0, 0, 255)
-				glColor3f(polygon.r, polygon.g, polygon.b)
-				glVertex3f(polygonPoint.x, polygonPoint.y, 0)
-		else:
-			points = polygon
-			for polygonPoint in polygon.points:
-				glColor3f(polygon.r, polygon.g, polygon.b)
-				glVertex3f(polygonPoint[0], polygonPoint[1], 0)
-		glEnd()
-
-
-
-
 	glLineWidth(3.0)
 	glBegin(GL_LINES)
 	for i in range(1, len(activePolygon)):
-		glColor3f(0.0, 0.0, 0.0)
+		glColor3f(0, 0, 0)
 		glVertex3f(activePolygon[i-1].x, activePolygon[i-1].y, 0.0)
 		glVertex3f(activePolygon[i].x, activePolygon[i].y, 0.0)
 	glEnd()
-
 	glLineWidth(3.0)
 	glBegin(GL_LINES)
-	glColor3f(0.0, 0.0, 0.0)
+	glColor3f(0, 0, 0)
 	glVertex3f(tempLine.pontoA.x, tempLine.pontoA.y, 0.0)
 	glVertex3f(tempLine.pontoB.x, tempLine.pontoB.y, 0.0)
 	glEnd()
-
-
+	for polygon in allPolygons:
+		global test
+		test = tessellate(polygon)
+		glCallList(test)
 	glPopMatrix()
 	glutSwapBuffers()
 	glutPostRedisplay()
@@ -120,7 +118,10 @@ def main():
 	glutInitWindowSize(screenW,screenH)
 	glutCreateWindow("Trabalho 2 - CG")
 	glClearColor(255.0,255.0,255.0,0.0)
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+	glutSwapBuffers()
 	glutMouseFunc(getMouse)
+	glutMotionFunc(mouseMotion)
 	glutPassiveMotionFunc(mouseDrag)
 	glutDisplayFunc(renderScene)
 	glutIdleFunc(renderScene)

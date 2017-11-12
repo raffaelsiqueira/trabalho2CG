@@ -371,8 +371,11 @@ class Polygon(object):
         self.r = r
         self.g = g
         self.b = b
-        self.nail = Point(0,0,0)
 
+        self.parents = []
+        self.children = []
+        self.nails = []
+        
     def __repr__(self):
         """String representation of this polygon.""" 
 
@@ -397,6 +400,10 @@ class Polygon(object):
     #  @return normal.
     #  @see https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal 
     #
+
+    def __setitem__(self, points):
+        self.points = points
+
     def compNormal(self):
         """Newell's method for getting polygon normal."""
 

@@ -1,0 +1,10 @@
+digraph "main.myPolygon"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="main.myPolygon",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="geometry.Polygon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgeometry_1_1Polygon.html",tooltip="In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight lin..."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="object",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

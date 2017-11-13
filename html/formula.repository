@@ -1,0 +1,1 @@
+\form#0:$(XYZ)^T = Z^T(a_z)\ Y^T(a_y)\ X^T(a_x) = Z(-a_z)\ Y(-a_y)\ X(-a_x)$

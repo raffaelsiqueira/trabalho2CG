@@ -1,0 +1,82 @@
+\hypertarget{main_8py}{}\section{main.\+py File Reference}
+\label{main_8py}\index{main.\+py@{main.\+py}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmain_1_1myPolygon}{main.\+my\+Polygon}
+\begin{DoxyCompactList}\small\item\em Class to extends Polygon class given in \hyperlink{geometry_8py}{geometry.\+py}. \end{DoxyCompactList}\item 
+class \hyperlink{classmain_1_1Line}{main.\+Line}
+\begin{DoxyCompactList}\small\item\em Class of the moving line used when the user draw the polygon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacemain}{main}
+\begin{DoxyCompactList}\small\item\em Main file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_a5390b522a8b23c1fa7bb4ef88f44e0e7}{main.\+my\+Reshape} (w, h)
+\begin{DoxyCompactList}\small\item\em Function to do the correct reshape of the window. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a462ff643e54edd543bfe037d02a1e43d}{main.\+orientation} (p, q, r)
+\begin{DoxyCompactList}\small\item\em Check orientation between 3 points. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a44b40290550e77e6a15cd18128ad82c2}{main.\+do\+Intersect} (l1, l2)
+\begin{DoxyCompactList}\small\item\em Check if two lines have intersection. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_aa99b6d3a6d32218b4f786b4b3e8bee92}{main.\+my\+Keyboard\+Func} (Key, x, y)
+\begin{DoxyCompactList}\small\item\em checks if the user has pressed a keyboard button \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a33eac5e1e174927a801f847ff8c2d484}{main.\+mouse\+Drag} (x, y)
+\begin{DoxyCompactList}\small\item\em Move the line used during the draw. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a4aa90045def6d2f29bf7b7a416b5aeed}{main.\+get\+Mouse} (button, state, x, y)
+\begin{DoxyCompactList}\small\item\em Get clicks on mouse. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_ae997bdd8d5e0cf367877b065573414d5}{main.\+poly\+Rotate} (point)
+\begin{DoxyCompactList}\small\item\em Rotate the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a848d152d3c07a537f3b10c10da6b9ada}{main.\+poly\+Translate} (polygon, point)
+\begin{DoxyCompactList}\small\item\em Translate the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_af741617d2be459cc13d54e92c1d363ab}{main.\+apply\+Transformation} (polygon, matrix)
+\begin{DoxyCompactList}\small\item\em Apply the transformation in the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a811bdfecb7d3d33030ecdd071a721cbf}{main.\+apply\+Points\+Transformation} (polygon, matrix)
+\begin{DoxyCompactList}\small\item\em Apply transformation in points. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_aac29b4e8c9fa3c64c062e76290492fb8}{main.\+mouse\+Motion} (x, y)
+\begin{DoxyCompactList}\small\item\em Function to move polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a1643f1b77856aad4a75df8da45cb9006}{main.\+draw\+Line\+Auxs} ()
+\begin{DoxyCompactList}\small\item\em Draw the lines when draw polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a923e8cecbed43bf133611a409c40c107}{main.\+draw\+Polygon} (polygon)
+\begin{DoxyCompactList}\small\item\em Draw polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a020b084aad026564a4c7ee5af1ac6b91}{main.\+draw\+Nails} (polygon)
+\begin{DoxyCompactList}\small\item\em Draw nails. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a9258848a9cd7db8568ec88c7846c4768}{main.\+render\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Function to render the scene. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_af613cea4cba4fb7de8e40896b3368945}{main.\+main} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespacemain_a985da8a132d11dcc00d693b5c6a62066}{main.\+screenW} = 640
+\item 
+int \hyperlink{namespacemain_ad8989b28561b60a2f903db7303bd7d2f}{main.\+screenH} = 480
+\item 
+\hyperlink{namespacemain_a76ff6cc371da95e41b8b785e77bf79aa}{main.\+drag\+Start} = Point(0,0,0)
+\item 
+bool \hyperlink{namespacemain_adf37c1088b5a3b0bb91496b491b8a83c}{main.\+clicked} = False
+\item 
+bool \hyperlink{namespacemain_afbd095805fe27d150b359c144b7ed863}{main.\+dragging} = False
+\item 
+list \hyperlink{namespacemain_a07b342aae28b10571a2fec275af11d30}{main.\+active\+Polygon} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_aefa0fded6ff7576348bd2abf3ab0f8a8}{main.\+all\+Polygons} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_a184193594cc4348fd4f60c39b6a01fcc}{main.\+nails} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_a5fa631ef1beea1be0731dfac0c03e83e}{main.\+all\+Points} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespacemain_a5f0756d4012f0ed8e06097d7de6b4f46}{main.\+actual\+Point} = Point(0,0,0)
+\item 
+list \hyperlink{namespacemain_add5856c8a2f29c2a313d0a979f3f9386}{main.\+current\+Poly} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespacemain_a1db6f501c5570dc08a064510cb9e71a8}{main.\+selected\+Poly} = None
+\item 
+bool \hyperlink{namespacemain_a52a1046251ec3805410ab8f60b921d57}{main.\+show\+How\+To\+Use} = True
+\item 
+\hyperlink{namespacemain_a8dd8e1c4bcedfacfff187452b92655c6}{main.\+line\+Aux} = Line(Point(0,0,0))
+\item 
+list \hyperlink{namespacemain_aa8e8bb4ccc8ddac3b8b3842e7218a252}{main.\+actual\+Lines} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}

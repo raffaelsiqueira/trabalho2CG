@@ -1,0 +1,348 @@
+\hypertarget{namespacematrix}{}\section{matrix Namespace Reference}
+\label{namespacematrix}\index{matrix@{matrix}}
+
+
+Open\+GL is column major and numpy row major.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacematrix_a74da677cb3d0158ed4a2d79d15cfc478}{translate} (dx, dy, dz)
+\begin{DoxyCompactList}\small\item\em Returns a translation matrix. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a3809ea999967baf83175d262fe553d2d}{scale} (sx, sy, sz)
+\begin{DoxyCompactList}\small\item\em Returns a scale matrix. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a34a66c5c7a2fb2e443cb1c28b70098e5}{rotate} (ang, x, y, z)
+\begin{DoxyCompactList}\small\item\em Returns a rotation matrix. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a3e5c0f4bcc7655342814615fa5b4bc0d}{identity} ()
+\begin{DoxyCompactList}\small\item\em Returns an identity matrix. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a4023520a6d24b4de107acd3c284db948}{dot} (a, b)
+\begin{DoxyCompactList}\small\item\em Matrix multiplication. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_ac41a59bd795819b4d4ac63531c08371a}{translate\+And\+Rotate} (ang, p, axis)
+\begin{DoxyCompactList}\small\item\em Rotate around an axis, passing through a given point. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a124af7b52efe8716b3a20db8204f3530}{translate\+And\+Transform} (t, p)
+\begin{DoxyCompactList}\small\item\em Apply a given transformation t, using p as the fixed point. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a6f88dcffb304ec9fabe5f5c7dfafa836}{rotate\+Z\+YX} (angles)
+\begin{DoxyCompactList}\small\item\em Return a rotation matrix, given three angles in the order\+: Z\+YX (apply Z first, then Y, then X). \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a6ec9bcea96b6f86fa8310972f553868e}{rotate\+X\+YZ} (angles)
+\begin{DoxyCompactList}\small\item\em Return a rotation matrix, given three angles in the order\+: X\+YZ (apply X first, then Y, then Z). \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_ade61e3d860067b059336746b261edb3c}{get\+Rotation\+Matrix} (angle, axis)
+\begin{DoxyCompactList}\small\item\em Returns a rotation matrix about a given axis. \end{DoxyCompactList}\item 
+def \hyperlink{namespacematrix_a9d2cb91b2ffd4a895f50de0376bf3462}{main} ()
+\begin{DoxyCompactList}\small\item\em Main program for testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Open\+GL is column major and numpy row major. 
+
+We use row major here, but could add order=\textquotesingle{}F\textquotesingle{} in reshape, to transform to column major, I guess...
+
+\begin{DoxyAuthor}{Author}
+Paulo Cavalcanti 
+\end{DoxyAuthor}
+\begin{DoxySince}{Since}
+13/02/2017 
+\end{DoxySince}
+\begin{DoxySeeAlso}{See also}
+\href{http://3dengine.org/Rotate_arb}{\tt http\+://3dengine.\+org/\+Rotate\+\_\+arb} 
+
+\href{http://www.python-course.eu/matrix_arithmetic.php}{\tt http\+://www.\+python-\/course.\+eu/matrix\+\_\+arithmetic.\+php} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\index{matrix@{matrix}!dot@{dot}}
+\index{dot@{dot}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{dot(a, b)}{dot(a, b)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+dot (
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a4023520a6d24b4de107acd3c284db948}{}\label{namespacematrix_a4023520a6d24b4de107acd3c284db948}
+
+
+Matrix multiplication. 
+
+The matrix objects are a subclass of the numpy arrays (ndarray). The matrix objects inherit all the attributes and methods of ndarray. Another difference is that numpy matrices are strictly 2-\/dimensional, while numpy arrays can be of any dimension, i.\+e. they are n-\/dimensional.
+
+The most important advantage of matrices is that they provide convenient notations for the matrix multiplication. If X and Y are two Matrices then X $\ast$ Y defines the matrix multiplication. While on the other hand, if X and Y are ndarrays, X $\ast$ Y define an element by element multiplication.
+
+If we want to perform matrix multiplication with two numpy arrays (ndarray), we have to use the dot product.
+
+Same as\+: gl\+Push\+Matrix() gl\+Load\+Matrixf(a) gl\+Mult\+Matrixf(b) c = gl\+Get\+Doublev ( G\+L\+\_\+\+M\+O\+D\+E\+L\+V\+I\+E\+W\+\_\+\+M\+A\+T\+R\+IX ) gl\+Pop\+Matrix() return c
+
+\begin{DoxySeeAlso}{See also}
+\href{http://www.python-course.eu/matrix_arithmetic.php}{\tt http\+://www.\+python-\/course.\+eu/matrix\+\_\+arithmetic.\+php} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & first matrix. \\
+\hline
+{\em b} & second matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a x b. 
+\end{DoxyReturn}
+
+
+Definition at line 123 of file matrix.\+py.
+
+\index{matrix@{matrix}!get\+Rotation\+Matrix@{get\+Rotation\+Matrix}}
+\index{get\+Rotation\+Matrix@{get\+Rotation\+Matrix}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{get\+Rotation\+Matrix(angle, axis)}{getRotationMatrix(angle, axis)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+get\+Rotation\+Matrix (
+\begin{DoxyParamCaption}
+\item[{}]{angle, }
+\item[{}]{axis}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_ade61e3d860067b059336746b261edb3c}{}\label{namespacematrix_ade61e3d860067b059336746b261edb3c}
+
+
+Returns a rotation matrix about a given axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & rotation angle in degrees. \\
+\hline
+{\em axis} & 0 -\/ x, 1 -\/ y, 2 -\/ z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rotation matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 192 of file matrix.\+py.
+
+\index{matrix@{matrix}!identity@{identity}}
+\index{identity@{identity}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{identity()}{identity()}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+identity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a3e5c0f4bcc7655342814615fa5b4bc0d}{}\label{namespacematrix_a3e5c0f4bcc7655342814615fa5b4bc0d}
+
+
+Returns an identity matrix. 
+
+Same as\+: gl\+Push\+Matrix() gl\+Load\+Identity() c = gl\+Get\+Doublev ( G\+L\+\_\+\+M\+O\+D\+E\+L\+V\+I\+E\+W\+\_\+\+M\+A\+T\+R\+IX ) gl\+Pop\+Matrix() return c
+
+\begin{DoxyReturn}{Returns}
+identity matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file matrix.\+py.
+
+\index{matrix@{matrix}!main@{main}}
+\index{main@{main}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a9d2cb91b2ffd4a895f50de0376bf3462}{}\label{namespacematrix_a9d2cb91b2ffd4a895f50de0376bf3462}
+
+
+Main program for testing. 
+
+
+
+Definition at line 201 of file matrix.\+py.
+
+\index{matrix@{matrix}!rotate@{rotate}}
+\index{rotate@{rotate}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{rotate(ang, x, y, z)}{rotate(ang, x, y, z)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+rotate (
+\begin{DoxyParamCaption}
+\item[{}]{ang, }
+\item[{}]{x, }
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a34a66c5c7a2fb2e443cb1c28b70098e5}{}\label{namespacematrix_a34a66c5c7a2fb2e443cb1c28b70098e5}
+
+
+Returns a rotation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ang} & rotation angle in degrees. \\
+\hline
+{\em x} & rotation axis (x vector component). \\
+\hline
+{\em y} & rotation axis (y vector component). \\
+\hline
+{\em z} & rotation axis (z vector component). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rotation matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 59 of file matrix.\+py.
+
+\index{matrix@{matrix}!rotate\+X\+YZ@{rotate\+X\+YZ}}
+\index{rotate\+X\+YZ@{rotate\+X\+YZ}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{rotate\+X\+Y\+Z(angles)}{rotateXYZ(angles)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+rotate\+X\+YZ (
+\begin{DoxyParamCaption}
+\item[{}]{angles}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a6ec9bcea96b6f86fa8310972f553868e}{}\label{namespacematrix_a6ec9bcea96b6f86fa8310972f553868e}
+
+
+Return a rotation matrix, given three angles in the order\+: X\+YZ (apply X first, then Y, then Z). 
+
+\begin{DoxySeeAlso}{See also}
+\href{http://www.chrobotics.com/library/understanding-euler-angles}{\tt http\+://www.\+chrobotics.\+com/library/understanding-\/euler-\/angles} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em angles} & a list with angle x, y and z. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a matrix Z $\ast$ Y $\ast$ X to be applied on column vectors (vector is on the right). 
+\end{DoxyReturn}
+
+
+Definition at line 178 of file matrix.\+py.
+
+\index{matrix@{matrix}!rotate\+Z\+YX@{rotate\+Z\+YX}}
+\index{rotate\+Z\+YX@{rotate\+Z\+YX}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{rotate\+Z\+Y\+X(angles)}{rotateZYX(angles)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+rotate\+Z\+YX (
+\begin{DoxyParamCaption}
+\item[{}]{angles}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a6f88dcffb304ec9fabe5f5c7dfafa836}{}\label{namespacematrix_a6f88dcffb304ec9fabe5f5c7dfafa836}
+
+
+Return a rotation matrix, given three angles in the order\+: Z\+YX (apply Z first, then Y, then X). 
+
+When the rotation is specified as rotations about three distinct axes (e.\+g. X-\/\+Y-\/Z), they should be called Tait–\+Bryan angles, but the popular term is still Euler angles. Therefore, we are going to call them Euler angles as well.
+
+The industry standard is Z-\/\+Y-\/X because that corresponds to yaw, pitch and roll.
+
+Note that\+: $(XYZ)^T = Z^T(a_z)\ Y^T(a_y)\ X^T(a_x) = Z(-a_z)\ Y(-a_y)\ X(-a_x)$
+
+\begin{DoxySeeAlso}{See also}
+\href{http://www.chrobotics.com/library/understanding-euler-angles}{\tt http\+://www.\+chrobotics.\+com/library/understanding-\/euler-\/angles} 
+
+\href{https://www.learnopencv.com/rotation-matrix-to-euler-angles/}{\tt https\+://www.\+learnopencv.\+com/rotation-\/matrix-\/to-\/euler-\/angles/} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em angles} & a list with angle x, y and z. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a matrix X $\ast$ Y $\ast$ Z to be applied on column vectors (vector is on the right). 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file matrix.\+py.
+
+\index{matrix@{matrix}!scale@{scale}}
+\index{scale@{scale}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{scale(sx, sy, sz)}{scale(sx, sy, sz)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+scale (
+\begin{DoxyParamCaption}
+\item[{}]{sx, }
+\item[{}]{sy, }
+\item[{}]{sz}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a3809ea999967baf83175d262fe553d2d}{}\label{namespacematrix_a3809ea999967baf83175d262fe553d2d}
+
+
+Returns a scale matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sx} & x scale. \\
+\hline
+{\em sy} & y scale. \\
+\hline
+{\em sz} & z scale. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+scale matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 42 of file matrix.\+py.
+
+\index{matrix@{matrix}!translate@{translate}}
+\index{translate@{translate}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{translate(dx, dy, dz)}{translate(dx, dy, dz)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+translate (
+\begin{DoxyParamCaption}
+\item[{}]{dx, }
+\item[{}]{dy, }
+\item[{}]{dz}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a74da677cb3d0158ed4a2d79d15cfc478}{}\label{namespacematrix_a74da677cb3d0158ed4a2d79d15cfc478}
+
+
+Returns a translation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & x translation. \\
+\hline
+{\em dy} & y translation. \\
+\hline
+{\em dz} & z translation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+translation matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file matrix.\+py.
+
+\index{matrix@{matrix}!translate\+And\+Rotate@{translate\+And\+Rotate}}
+\index{translate\+And\+Rotate@{translate\+And\+Rotate}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{translate\+And\+Rotate(ang, p, axis)}{translateAndRotate(ang, p, axis)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+translate\+And\+Rotate (
+\begin{DoxyParamCaption}
+\item[{}]{ang, }
+\item[{}]{p, }
+\item[{}]{axis}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_ac41a59bd795819b4d4ac63531c08371a}{}\label{namespacematrix_ac41a59bd795819b4d4ac63531c08371a}
+
+
+Rotate around an axis, passing through a given point. 
+
+Same as\+: gl\+Push\+Matrix() gl\+Load\+Identity() gl\+Translate(p.\+x,p.\+y,p.\+z) gl\+Rotate(ang, axix.\+x, axis.\+y, axis.\+z) gl\+Translate(-\/p.\+x,-\/p.\+y,-\/p.\+z) T = gl\+Get\+Doublev ( G\+L\+\_\+\+M\+O\+D\+E\+L\+V\+I\+E\+W\+\_\+\+M\+A\+T\+R\+IX ) gl\+Pop\+Matrix() return T
+
+
+\begin{DoxyParams}{Parameters}
+{\em ang} & rotation angle. \\
+\hline
+{\em p} & point the axix passes through. \\
+\hline
+{\em axis} & rotation axis. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rotation matrix\+: T.\+R.-\/T 
+\end{DoxyReturn}
+
+
+Definition at line 143 of file matrix.\+py.
+
+\index{matrix@{matrix}!translate\+And\+Transform@{translate\+And\+Transform}}
+\index{translate\+And\+Transform@{translate\+And\+Transform}!matrix@{matrix}}
+\subsubsection[{\texorpdfstring{translate\+And\+Transform(t, p)}{translateAndTransform(t, p)}}]{\setlength{\rightskip}{0pt plus 5cm}def matrix.\+translate\+And\+Transform (
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacematrix_a124af7b52efe8716b3a20db8204f3530}{}\label{namespacematrix_a124af7b52efe8716b3a20db8204f3530}
+
+
+Apply a given transformation t, using p as the fixed point. 
+
+
+
+Definition at line 150 of file matrix.\+py.
+

@@ -1,0 +1,305 @@
+\hypertarget{namespacegeometry}{}\section{geometry Namespace Reference}
+\label{namespacegeometry}\index{geometry@{geometry}}
+
+
+Classes and geometric utilities commonly used in computational geometry, such as\+: point, line, polygon, triangle and box.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classgeometry_1_1Box}{Box}
+\begin{DoxyCompactList}\small\item\em A bounging box is the smallest rectangle, aligned with the coordinate axes, which contain a given set of points. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Line}{Line}
+\begin{DoxyCompactList}\small\item\em Two points define a straight line. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Point}{Point}
+\begin{DoxyCompactList}\small\item\em Implements a 3D point or vector. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Polygon}{Polygon}
+\begin{DoxyCompactList}\small\item\em In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight line segments, closing in a loop, to form a closed polygonal chain or circuit. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Triangle}{Triangle}
+\begin{DoxyCompactList}\small\item\em A triangle is a polygon with three edges and three vertices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegeometry_a826edf3113b2277f596bc7927da2fd4e}{ccw3} (A, B, C, N)
+\item 
+def \hyperlink{namespacegeometry_ad67511f31b70990660efd63da577f482}{ccw} (A, B, C)
+\item 
+def \hyperlink{namespacegeometry_a3df8ee137b8d01576f14084dee3a6a91}{intersect} (a1, b1, a2, b2)
+\item 
+def \hyperlink{namespacegeometry_a118331eb1c38459dd57dad62f75abea5}{close} (a, b, epsilon=\hyperlink{namespacegeometry_a543db87a5e9af9e1d17146559a540276}{E\+PS})
+\item 
+def \hyperlink{namespacegeometry_acaccff5b694d39c9db5072c671c6568b}{shortest\+Path\+To\+Line} (self, that)
+\begin{DoxyCompactList}\small\item\em Calculate the line segment Pa\+Pb that is the shortest route between two lines P1\+P2 and P3\+P4. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_a96071e09708da91677cc86ea91705f5e}{distance\+To\+Line} (self, that)
+\item 
+def \hyperlink{namespacegeometry_afe255f1239fc866c1c2c04b30c37b696}{intersection} (self, that)
+\item 
+def \hyperlink{namespacegeometry_aa7e72b904b344b7d45b75f3942bc618b}{midpoint} (self)
+\item 
+def \hyperlink{namespacegeometry_a08506b08fe50ecd6e3c7098f63178881}{intersect\+To\+Plane} (self, poly)
+\item 
+def \hyperlink{namespacegeometry_a7c89848bc4970d590b82641648503bd9}{area} (self)
+\begin{DoxyCompactList}\small\item\em Calculates the area of a planar polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_a9453ec6bad9d4ba50724a4df0b1a74ed}{distance} (self, p)
+\begin{DoxyCompactList}\small\item\em Returns the distance of a given point to the plane of this polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_ac7327d8cae2a771c06a0ded4c91ab4a7}{interior\+Point} (self)
+\item 
+def \hyperlink{namespacegeometry_ac3bf912ad06b884d2c21a3f91cf7c392}{exterior\+Point} (self)
+\item 
+def \hyperlink{namespacegeometry_a284499afed4bfe4096ca1c78062a16bb}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{namespacegeometry_a543db87a5e9af9e1d17146559a540276}{E\+PS} = 0.\+001
+\begin{DoxyCompactList}\small\item\em Tolerance used for checking equalities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classes and geometric utilities commonly used in computational geometry, such as\+: point, line, polygon, triangle and box. 
+
+\begin{DoxyAuthor}{Author}
+Flavia Cavalcanti 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+01/02/2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{geometry@{geometry}!area@{area}}
+\index{area@{area}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{area(self)}{area(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+area (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a7c89848bc4970d590b82641648503bd9}{}\label{namespacegeometry_a7c89848bc4970d590b82641648503bd9}
+
+
+Calculates the area of a planar polygon. 
+
+The algorithm is as follows\+:~\newline
+ \begin{DoxyVerb}Traverse the loop of coordinates, assuming that it is in
+clockwise order, computing the components of the "area" of the
+enclosed polygon.  The total "area" components are computed by
+adding "area" components (cross product components) of
+triangles sides formed by the first, previous, and current
+vertices.  If the loop is not convex, some of the triangle
+areas might be negative, but those will be compensated by other
+positive triangle areas so that the final area is positive.<br>
+\end{DoxyVerb}
+
+
+Note\+: area here is actually twice the area. ~\newline
+ positive here means in the direction of the face normal.
+
+\begin{DoxyReturn}{Returns}
+twice the polygon area.\begin{DoxyVerb}Returns the area of the polygon.\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 480 of file geometry.\+py.
+
+\index{geometry@{geometry}!ccw@{ccw}}
+\index{ccw@{ccw}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{ccw(\+A, B, C)}{ccw(A, B, C)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+ccw (
+\begin{DoxyParamCaption}
+\item[{}]{A, }
+\item[{}]{B, }
+\item[{}]{C}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_ad67511f31b70990660efd63da577f482}{}\label{namespacegeometry_ad67511f31b70990660efd63da577f482}
+\begin{DoxyVerb}Tests whether the angle formed by 2D points A, B, and C is ccw.\end{DoxyVerb}
+ 
+
+Definition at line 23 of file geometry.\+py.
+
+\index{geometry@{geometry}!ccw3@{ccw3}}
+\index{ccw3@{ccw3}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{ccw3(\+A, B, C, N)}{ccw3(A, B, C, N)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+ccw3 (
+\begin{DoxyParamCaption}
+\item[{}]{A, }
+\item[{}]{B, }
+\item[{}]{C, }
+\item[{}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a826edf3113b2277f596bc7927da2fd4e}{}\label{namespacegeometry_a826edf3113b2277f596bc7927da2fd4e}
+\begin{DoxyVerb}Tests whether the angle formed by 3D points A, B, C and normal N is ccw.\end{DoxyVerb}
+ 
+
+Definition at line 19 of file geometry.\+py.
+
+\index{geometry@{geometry}!close@{close}}
+\index{close@{close}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{close(a, b, epsilon=\+E\+P\+S)}{close(a, b, epsilon=EPS)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+close (
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{epsilon = {\ttfamily {\bf E\+PS}}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a118331eb1c38459dd57dad62f75abea5}{}\label{namespacegeometry_a118331eb1c38459dd57dad62f75abea5}
+\begin{DoxyVerb}Returns whether two floats a and b are equal.\end{DoxyVerb}
+ 
+
+Definition at line 32 of file geometry.\+py.
+
+\index{geometry@{geometry}!distance@{distance}}
+\index{distance@{distance}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{distance(self, p)}{distance(self, p)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+distance (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a9453ec6bad9d4ba50724a4df0b1a74ed}{}\label{namespacegeometry_a9453ec6bad9d4ba50724a4df0b1a74ed}
+
+
+Returns the distance of a given point to the plane of this polygon. 
+
+\begin{DoxyReturn}{Returns}
+dist(p) = 0, if p is onto the plane, $>$ 0, if p is into the semi-\/space pointed to by the normal vector, $<$ 0, otherwise.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{http://mathinsight.org/distance_point_plane@verbatim}{\tt http\+://mathinsight.\+org/distance\+\_\+point\+\_\+plane@verbatim} "Returns the \hyperlink{namespacegeometry_a9453ec6bad9d4ba50724a4df0b1a74ed}{distance} of a given point to the plane of this polygon. 
+\end{DoxySeeAlso}
+
+
+Definition at line 501 of file geometry.\+py.
+
+\index{geometry@{geometry}!distance\+To\+Line@{distance\+To\+Line}}
+\index{distance\+To\+Line@{distance\+To\+Line}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{distance\+To\+Line(self, that)}{distanceToLine(self, that)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+distance\+To\+Line (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{that}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a96071e09708da91677cc86ea91705f5e}{}\label{namespacegeometry_a96071e09708da91677cc86ea91705f5e}
+\begin{DoxyVerb}Returns the distance between two lines.\end{DoxyVerb}
+ 
+
+Definition at line 300 of file geometry.\+py.
+
+\index{geometry@{geometry}!exterior\+Point@{exterior\+Point}}
+\index{exterior\+Point@{exterior\+Point}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{exterior\+Point(self)}{exteriorPoint(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+exterior\+Point (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_ac3bf912ad06b884d2c21a3f91cf7c392}{}\label{namespacegeometry_ac3bf912ad06b884d2c21a3f91cf7c392}
+\begin{DoxyVerb}Returns a random exterior point near the polygon.\end{DoxyVerb}
+ 
+
+Definition at line 528 of file geometry.\+py.
+
+\index{geometry@{geometry}!interior\+Point@{interior\+Point}}
+\index{interior\+Point@{interior\+Point}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{interior\+Point(self)}{interiorPoint(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+interior\+Point (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_ac7327d8cae2a771c06a0ded4c91ab4a7}{}\label{namespacegeometry_ac7327d8cae2a771c06a0ded4c91ab4a7}
+\begin{DoxyVerb}Returns a random interior point via rejection sampling.\end{DoxyVerb}
+ 
+
+Definition at line 510 of file geometry.\+py.
+
+\index{geometry@{geometry}!intersect@{intersect}}
+\index{intersect@{intersect}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{intersect(a1, b1, a2, b2)}{intersect(a1, b1, a2, b2)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+intersect (
+\begin{DoxyParamCaption}
+\item[{}]{a1, }
+\item[{}]{b1, }
+\item[{}]{a2, }
+\item[{}]{b2}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a3df8ee137b8d01576f14084dee3a6a91}{}\label{namespacegeometry_a3df8ee137b8d01576f14084dee3a6a91}
+\begin{DoxyVerb}Returns True if the line segments a1b1 and a2b2 intersect.\end{DoxyVerb}
+ 
+
+Definition at line 27 of file geometry.\+py.
+
+\index{geometry@{geometry}!intersection@{intersection}}
+\index{intersection@{intersection}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{intersection(self, that)}{intersection(self, that)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+intersection (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{that}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_afe255f1239fc866c1c2c04b30c37b696}{}\label{namespacegeometry_afe255f1239fc866c1c2c04b30c37b696}
+\begin{DoxyVerb}Returns the intersection point between two lines.\end{DoxyVerb}
+ 
+
+Definition at line 309 of file geometry.\+py.
+
+\index{geometry@{geometry}!intersect\+To\+Plane@{intersect\+To\+Plane}}
+\index{intersect\+To\+Plane@{intersect\+To\+Plane}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{intersect\+To\+Plane(self, poly)}{intersectToPlane(self, poly)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+intersect\+To\+Plane (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{poly}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a08506b08fe50ecd6e3c7098f63178881}{}\label{namespacegeometry_a08506b08fe50ecd6e3c7098f63178881}
+\begin{DoxyVerb}Returns the intersection between this line and a given polygon plane.\end{DoxyVerb}
+ 
+
+Definition at line 326 of file geometry.\+py.
+
+\index{geometry@{geometry}!main@{main}}
+\index{main@{main}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_a284499afed4bfe4096ca1c78062a16bb}{}\label{namespacegeometry_a284499afed4bfe4096ca1c78062a16bb}
+\begin{DoxyVerb}Main program for testing.\end{DoxyVerb}
+ 
+
+Definition at line 691 of file geometry.\+py.
+
+\index{geometry@{geometry}!midpoint@{midpoint}}
+\index{midpoint@{midpoint}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{midpoint(self)}{midpoint(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+midpoint (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_aa7e72b904b344b7d45b75f3942bc618b}{}\label{namespacegeometry_aa7e72b904b344b7d45b75f3942bc618b}
+\begin{DoxyVerb}Returns the middle point of this segment.\end{DoxyVerb}
+ 
+
+Definition at line 318 of file geometry.\+py.
+
+\index{geometry@{geometry}!shortest\+Path\+To\+Line@{shortest\+Path\+To\+Line}}
+\index{shortest\+Path\+To\+Line@{shortest\+Path\+To\+Line}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{shortest\+Path\+To\+Line(self, that)}{shortestPathToLine(self, that)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+shortest\+Path\+To\+Line (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{that}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacegeometry_acaccff5b694d39c9db5072c671c6568b}{}\label{namespacegeometry_acaccff5b694d39c9db5072c671c6568b}
+
+
+Calculate the line segment Pa\+Pb that is the shortest route between two lines P1\+P2 and P3\+P4. 
+
+Calculate also the values of mua and mub where Pa = P1 + mua (P2 -\/ P1) Pb = P3 + mub (P4 -\/ P3) Return None if no solution exists.\begin{DoxyVerb}Return the shortest segment between two lines.
+
+   @see http://paulbourke.net/geometry/pointlineplane/
+\end{DoxyVerb}
+ 
+
+Definition at line 256 of file geometry.\+py.
+
+
+
+\subsection{Variable Documentation}
+\index{geometry@{geometry}!E\+PS@{E\+PS}}
+\index{E\+PS@{E\+PS}!geometry@{geometry}}
+\subsubsection[{\texorpdfstring{E\+PS}{EPS}}]{\setlength{\rightskip}{0pt plus 5cm}float geometry.\+E\+PS = 0.\+001}\hypertarget{namespacegeometry_a543db87a5e9af9e1d17146559a540276}{}\label{namespacegeometry_a543db87a5e9af9e1d17146559a540276}
+
+
+Tolerance used for checking equalities. 
+
+
+
+Definition at line 17 of file geometry.\+py.
+

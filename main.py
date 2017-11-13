@@ -1,3 +1,7 @@
+## @package main
+# Main file
+# @author Raffael Siqueira
+
 from __future__ import division
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
@@ -13,6 +17,7 @@ from matrix import *
 screenW = 640 
 screenH = 480
 
+##Class to extends Polygon class given in geometry.py
 class myPolygon(Polygon):
 	def __init__(self, points, r, g, b):
 		super(myPolygon, self).__init__(points)
@@ -36,15 +41,20 @@ currentPoly = []
 selectedPoly = None
 showHowToUse = True
 
+##Class of the moving line used when the user draw the polygon
 class Line:
 	def __init__(self, pointA):
 		self.pointA = pointA
 		self.pointB = Point(pointA.x, pointA.y,0)
 
-tempLine = Line(Point(0,0,0))
+lineAux = Line(Point(0,0,0))
 actualLines = []
 
-def changeSize(w, h):
+## Function to do the correct reshape of the window
+# @param w - Width of the window
+# @param h - Height of the window
+
+def myReshape(w, h):
 	global screenW
 	global screenH
 
@@ -61,6 +71,8 @@ def changeSize(w, h):
 	screenH = h
 	glViewport(0, 0, w, h)
 
+## Check orientation between 3 points
+# @param 3 points that will have their orientation calculated
 def orientation(p, q, r):
 	o = ((q.y - p.y)*(r.x - q.x)) - ((q.x - p.x) * (r.y - q.y))
 
@@ -73,6 +85,10 @@ def orientation(p, q, r):
 	else:
 		return 2
 
+## Check if two lines have intersection
+#@param l1 Line
+# @param l2 Line
+# @return boolean
 def doIntersect(l1, l2):
 	o1 = orientation(l1.pointA, l1.pointB, l2.pointA)
 	o2 = orientation(l1.pointA, l1.pointB, l2.pointB)
@@ -84,6 +100,10 @@ def doIntersect(l1, l2):
 	else:
 		return False
 
+## checks if the user has pressed a keyboard button
+# @param Key - The key pressed
+# @param x
+# @param y
 def myKeyboardFunc(Key, x ,y):
 	if Key == 'h':
 		print 'How to use:'
@@ -92,17 +112,25 @@ def myKeyboardFunc(Key, x ,y):
 		print 'To delete a nail click on it with the right button'
 
 
+## Move the line used during the draw
+# @param x
+# @param y
 def mouseDrag(x, y):
 	if(clicked):
-		tempLine.pointB.x = x
-		tempLine.pointB.y = y
+		lineAux.pointB.x = x
+		lineAux.pointB.y = y
 	glutPostRedisplay()
 
+## Get clicks on mouse
+# @param button
+# @param state
+# @param x
+# @param y
 def getMouse(button, state, x, y):
 	global activePolygon
 	global allPoints
 	global clicked
-	global tempLine
+	global lineAux
 	global actualPoint
 	global selectedPoly
 	global dragStart
@@ -112,7 +140,7 @@ def getMouse(button, state, x, y):
 	actualPoint = Point(x,y,0)
 
 	if (button == GLUT_LEFT_BUTTON and state == GLUT_DOWN):
-		if len(actualLines) == 0 and tempLine.pointA.x == 0 and tempLine.pointA.y == 0:
+		if len(actualLines) == 0 and lineAux.pointA.x == 0 and lineAux.pointA.y == 0:
 			for poly in allPolygons:
 				if poly.contains(actualPoint):
 					selectedPoly = poly
@@ -121,34 +149,34 @@ def getMouse(button, state, x, y):
 				dragStart = actualPoint
 				return
 
-		if len(actualLines) == 0 and tempLine.pointA.x != tempLine.pointB.x and tempLine.pointA.y != tempLine.pointB.y:
-			actualLines.append(tempLine)
+		if len(actualLines) == 0 and lineAux.pointA.x != lineAux.pointB.x and lineAux.pointA.y != lineAux.pointB.y:
+			actualLines.append(lineAux)
 		else:
 			if len(actualLines) > 0:
 				for i,line in enumerate(actualLines):
 					if i != len(actualLines)-1:
-						if doIntersect(line, tempLine) and i!=0:
+						if doIntersect(line, lineAux) and i!=0:
 							raise ValueError('Self intersections is not allowed')
-						elif doIntersect(line, tempLine) and i==0:
-							if line.pointA.dist(tempLine.pointB) >= 20:
+						elif doIntersect(line, lineAux) and i==0:
+							if line.pointA.dist(lineAux.pointB) >= 20:
 								raise ValueError('Self intersections is not allowed')
-							tempLine.pointB.x = line.pointA.x + 1
-							tempLine.pointB.y = line.pointA.y + 1
+							lineAux.pointB.x = line.pointA.x + 1
+							lineAux.pointB.y = line.pointA.y + 1
 							actualPoint.x = line.pointA.x + 1
 							actualPoint.y = line.pointA.y + 1
-				actualLines.append(tempLine)
+				actualLines.append(lineAux)
 				
 			
 		clicked = True
-		tempLine = Line(actualPoint)
+		lineAux = Line(actualPoint)
 		activePolygon.append(actualPoint)
 		allPoints.append(actualPoint)
 
 		if len(activePolygon) > 2 and activePolygon[-1].dist(activePolygon[0]) <= 20:
 			del allPoints[-1]
 			clicked = False
-			actualLines.append(tempLine)
-			tempLine = Line(Point(0,0,0))
+			actualLines.append(lineAux)
+			lineAux = Line(Point(0,0,0))
 			poly = myPolygon(activePolygon[:], numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0))
 			
 				
@@ -197,7 +225,9 @@ def getMouse(button, state, x, y):
 							child.nails.append(nail)
 		
 
-def rotatePolygon(point):
+## Rotate the clicked polygon
+# @param point
+def polyRotate(point):
 	global dragStart
 	rotatePoint = selectedPoly.nails[0]
 	 
@@ -217,29 +247,38 @@ def rotatePolygon(point):
 	angle *= -1
 
 	matrix = translateAndRotate(angle, rotatePoint, Point(0,0,1))
-	applyTransformationToPoints(selectedPoly, matrix)
+	applyPointsTransformation(selectedPoly, matrix)
 	if(selectedPoly.children):
-		applyTransformationToChildren(selectedPoly, matrix)
+		applyTransformation(selectedPoly, matrix)
 	dragStart = point
 
-def translatePolygon(polygon, point):
+## Translate the clicked polygon
+# @param polygon
+# @param point
+def polyTranslate(polygon, point):
 	global dragStart
 	distX = point.x - dragStart.x
 	distY = point.y - dragStart.y
 	matrix = translate(distX,distY,0)
 	if(polygon.children):
-		applyTransformationToChildren(polygon, matrix)
-	applyTransformationToPoints(polygon, matrix)
+		applyTransformation(polygon, matrix)
+	applyPointsTransformation(polygon, matrix)
 	dragStart = point
 
-def applyTransformationToChildren(polygon,matrix):
+## Apply the transformation in the clicked polygon
+# @param polygon
+# @param matrix
+def applyTransformation(polygon,matrix):
 	for child in set(polygon.children):
-		applyTransformationToPoints(child,matrix)
+		applyPointsTransformation(child,matrix)
 		if(child.children):
-			applyTransformationToChildren(child,matrix)
+			applyTransformation(child,matrix)
 
 
-def applyTransformationToPoints(polygon,matrix):
+## Apply transformation in points
+# @param polygon
+# @param matrix
+def applyPointsTransformation(polygon,matrix):
 	matrix = numpy.array(matrix)
 	for p in polygon.points:
 		pointN = numpy.array([p.x,p.y,0,1])
@@ -254,16 +293,20 @@ def applyTransformationToPoints(polygon,matrix):
 		nail.x = result[0]
 		nail.y = result[1]
 
+## Function to move polygons
+# @param x
+# @param y
 def mouseMotion(x,y):
 	global dragStart
 	point = Point(x,y,0)
 	if(selectedPoly is not None):
 		if selectedPoly.parents and len(selectedPoly.nails) >= 1:
-			rotatePolygon(point)
+			polyRotate(point)
 		elif not selectedPoly.parents:
-			translatePolygon(selectedPoly, point)
+			polyTranslate(selectedPoly, point)
 
-def drawTempLines():
+## Draw the lines when draw polygons
+def drawLineAuxs():
 	glLineWidth(1.5)
 	glBegin(GL_LINES)
 	for i in range(1, len(activePolygon)):
@@ -274,14 +317,16 @@ def drawTempLines():
 	glLineWidth(1.5)
 	glBegin(GL_LINES)
 	glColor3f(0, 0, 0)
-	glVertex3f(tempLine.pointA.x, tempLine.pointA.y, 0.0)
-	glVertex3f(tempLine.pointB.x, tempLine.pointB.y, 0.0)
+	glVertex3f(lineAux.pointA.x, lineAux.pointA.y, 0.0)
+	glVertex3f(lineAux.pointB.x, lineAux.pointB.y, 0.0)
 	glEnd()
 
+## Draw polygons
 def drawPolygon(polygon):
 	tess = tessellate(polygon)
 	glCallList(tess)
 
+## Draw nails
 def drawNails(polygon):
 	glPointSize(10.0)
 	glBegin(GL_POINTS)
@@ -290,7 +335,7 @@ def drawNails(polygon):
 		glVertex3f(nail.x, nail.y, 0.0)
 	glEnd()
 
-
+## Function to render the scene
 def renderScene ():
 	global showHowToUse
 
@@ -309,13 +354,13 @@ def renderScene ():
 	for polygon in allPolygons:
 		drawPolygon(polygon)
 		drawNails(polygon)
-	drawTempLines()
+	drawLineAuxs()
 	glPopMatrix()
 	glutSwapBuffers()
 	glutPostRedisplay()
 	glFlush()
 	
-
+## Main function
 def main():
 	glutInit(sys.argv)
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA)
@@ -331,7 +376,7 @@ def main():
 	glutPassiveMotionFunc(mouseDrag)
 	glutDisplayFunc(renderScene)
 	glutIdleFunc(renderScene)
-	glutReshapeFunc(changeSize)
+	glutReshapeFunc(myReshape)
 	glutMainLoop()
 
 			

@@ -1,0 +1,537 @@
+\hypertarget{namespacemain}{}\section{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+
+
+Main file.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmain_1_1Line}{Line}
+\begin{DoxyCompactList}\small\item\em Class of the moving line used when the user draw the polygon. \end{DoxyCompactList}\item 
+class \hyperlink{classmain_1_1myPolygon}{my\+Polygon}
+\begin{DoxyCompactList}\small\item\em Class to extends Polygon class given in \hyperlink{geometry_8py}{geometry.\+py}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_a5390b522a8b23c1fa7bb4ef88f44e0e7}{my\+Reshape} (w, h)
+\begin{DoxyCompactList}\small\item\em Function to do the correct reshape of the window. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a462ff643e54edd543bfe037d02a1e43d}{orientation} (p, q, r)
+\begin{DoxyCompactList}\small\item\em Check orientation between 3 points. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a44b40290550e77e6a15cd18128ad82c2}{do\+Intersect} (l1, l2)
+\begin{DoxyCompactList}\small\item\em Check if two lines have intersection. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_aa99b6d3a6d32218b4f786b4b3e8bee92}{my\+Keyboard\+Func} (Key, x, y)
+\begin{DoxyCompactList}\small\item\em checks if the user has pressed a keyboard button \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a33eac5e1e174927a801f847ff8c2d484}{mouse\+Drag} (x, y)
+\begin{DoxyCompactList}\small\item\em Move the line used during the draw. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a4aa90045def6d2f29bf7b7a416b5aeed}{get\+Mouse} (button, state, x, y)
+\begin{DoxyCompactList}\small\item\em Get clicks on mouse. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_ae997bdd8d5e0cf367877b065573414d5}{poly\+Rotate} (point)
+\begin{DoxyCompactList}\small\item\em Rotate the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a848d152d3c07a537f3b10c10da6b9ada}{poly\+Translate} (polygon, point)
+\begin{DoxyCompactList}\small\item\em Translate the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_af741617d2be459cc13d54e92c1d363ab}{apply\+Transformation} (polygon, matrix)
+\begin{DoxyCompactList}\small\item\em Apply the transformation in the clicked polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a811bdfecb7d3d33030ecdd071a721cbf}{apply\+Points\+Transformation} (polygon, matrix)
+\begin{DoxyCompactList}\small\item\em Apply transformation in points. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_aac29b4e8c9fa3c64c062e76290492fb8}{mouse\+Motion} (x, y)
+\begin{DoxyCompactList}\small\item\em Function to move polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a1643f1b77856aad4a75df8da45cb9006}{draw\+Line\+Auxs} ()
+\begin{DoxyCompactList}\small\item\em Draw the lines when draw polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a923e8cecbed43bf133611a409c40c107}{draw\+Polygon} (polygon)
+\begin{DoxyCompactList}\small\item\em Draw polygons. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a020b084aad026564a4c7ee5af1ac6b91}{draw\+Nails} (polygon)
+\begin{DoxyCompactList}\small\item\em Draw nails. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_a9258848a9cd7db8568ec88c7846c4768}{render\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Function to render the scene. \end{DoxyCompactList}\item 
+def \hyperlink{namespacemain_af613cea4cba4fb7de8e40896b3368945}{main} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespacemain_a985da8a132d11dcc00d693b5c6a62066}{screenW} = 640
+\item 
+int \hyperlink{namespacemain_ad8989b28561b60a2f903db7303bd7d2f}{screenH} = 480
+\item 
+\hyperlink{namespacemain_a76ff6cc371da95e41b8b785e77bf79aa}{drag\+Start} = \hyperlink{classgeometry_1_1Point}{Point}(0,0,0)
+\item 
+bool \hyperlink{namespacemain_adf37c1088b5a3b0bb91496b491b8a83c}{clicked} = False
+\item 
+bool \hyperlink{namespacemain_afbd095805fe27d150b359c144b7ed863}{dragging} = False
+\item 
+list \hyperlink{namespacemain_a07b342aae28b10571a2fec275af11d30}{active\+Polygon} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_aefa0fded6ff7576348bd2abf3ab0f8a8}{all\+Polygons} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_a184193594cc4348fd4f60c39b6a01fcc}{nails} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacemain_a5fa631ef1beea1be0731dfac0c03e83e}{all\+Points} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespacemain_a5f0756d4012f0ed8e06097d7de6b4f46}{actual\+Point} = \hyperlink{classgeometry_1_1Point}{Point}(0,0,0)
+\item 
+list \hyperlink{namespacemain_add5856c8a2f29c2a313d0a979f3f9386}{current\+Poly} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespacemain_a1db6f501c5570dc08a064510cb9e71a8}{selected\+Poly} = None
+\item 
+bool \hyperlink{namespacemain_a52a1046251ec3805410ab8f60b921d57}{show\+How\+To\+Use} = True
+\item 
+\hyperlink{namespacemain_a8dd8e1c4bcedfacfff187452b92655c6}{line\+Aux} = \hyperlink{classgeometry_1_1Line}{Line}(\hyperlink{classgeometry_1_1Point}{Point}(0,0,0))
+\item 
+list \hyperlink{namespacemain_aa8e8bb4ccc8ddac3b8b3842e7218a252}{actual\+Lines} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main file. 
+
+\begin{DoxyAuthor}{Author}
+Raffael Siqueira 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{main@{main}!apply\+Points\+Transformation@{apply\+Points\+Transformation}}
+\index{apply\+Points\+Transformation@{apply\+Points\+Transformation}!main@{main}}
+\subsubsection[{\texorpdfstring{apply\+Points\+Transformation(polygon, matrix)}{applyPointsTransformation(polygon, matrix)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+apply\+Points\+Transformation (
+\begin{DoxyParamCaption}
+\item[{}]{polygon, }
+\item[{}]{matrix}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a811bdfecb7d3d33030ecdd071a721cbf}{}\label{namespacemain_a811bdfecb7d3d33030ecdd071a721cbf}
+
+
+Apply transformation in points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+{\em matrix} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 281 of file main.\+py.
+
+\index{main@{main}!apply\+Transformation@{apply\+Transformation}}
+\index{apply\+Transformation@{apply\+Transformation}!main@{main}}
+\subsubsection[{\texorpdfstring{apply\+Transformation(polygon, matrix)}{applyTransformation(polygon, matrix)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+apply\+Transformation (
+\begin{DoxyParamCaption}
+\item[{}]{polygon, }
+\item[{}]{matrix}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_af741617d2be459cc13d54e92c1d363ab}{}\label{namespacemain_af741617d2be459cc13d54e92c1d363ab}
+
+
+Apply the transformation in the clicked polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+{\em matrix} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 271 of file main.\+py.
+
+\index{main@{main}!do\+Intersect@{do\+Intersect}}
+\index{do\+Intersect@{do\+Intersect}!main@{main}}
+\subsubsection[{\texorpdfstring{do\+Intersect(l1, l2)}{doIntersect(l1, l2)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+do\+Intersect (
+\begin{DoxyParamCaption}
+\item[{}]{l1, }
+\item[{}]{l2}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a44b40290550e77e6a15cd18128ad82c2}{}\label{namespacemain_a44b40290550e77e6a15cd18128ad82c2}
+
+
+Check if two lines have intersection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l1} & \hyperlink{classmain_1_1Line}{Line} \\
+\hline
+{\em l2} & \hyperlink{classmain_1_1Line}{Line} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 92 of file main.\+py.
+
+\index{main@{main}!draw\+Line\+Auxs@{draw\+Line\+Auxs}}
+\index{draw\+Line\+Auxs@{draw\+Line\+Auxs}!main@{main}}
+\subsubsection[{\texorpdfstring{draw\+Line\+Auxs()}{drawLineAuxs()}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+draw\+Line\+Auxs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a1643f1b77856aad4a75df8da45cb9006}{}\label{namespacemain_a1643f1b77856aad4a75df8da45cb9006}
+
+
+Draw the lines when draw polygons. 
+
+
+
+Definition at line 309 of file main.\+py.
+
+\index{main@{main}!draw\+Nails@{draw\+Nails}}
+\index{draw\+Nails@{draw\+Nails}!main@{main}}
+\subsubsection[{\texorpdfstring{draw\+Nails(polygon)}{drawNails(polygon)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+draw\+Nails (
+\begin{DoxyParamCaption}
+\item[{}]{polygon}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a020b084aad026564a4c7ee5af1ac6b91}{}\label{namespacemain_a020b084aad026564a4c7ee5af1ac6b91}
+
+
+Draw nails. 
+
+
+
+Definition at line 330 of file main.\+py.
+
+\index{main@{main}!draw\+Polygon@{draw\+Polygon}}
+\index{draw\+Polygon@{draw\+Polygon}!main@{main}}
+\subsubsection[{\texorpdfstring{draw\+Polygon(polygon)}{drawPolygon(polygon)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+draw\+Polygon (
+\begin{DoxyParamCaption}
+\item[{}]{polygon}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a923e8cecbed43bf133611a409c40c107}{}\label{namespacemain_a923e8cecbed43bf133611a409c40c107}
+
+
+Draw polygons. 
+
+
+
+Definition at line 325 of file main.\+py.
+
+\index{main@{main}!get\+Mouse@{get\+Mouse}}
+\index{get\+Mouse@{get\+Mouse}!main@{main}}
+\subsubsection[{\texorpdfstring{get\+Mouse(button, state, x, y)}{getMouse(button, state, x, y)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+get\+Mouse (
+\begin{DoxyParamCaption}
+\item[{}]{button, }
+\item[{}]{state, }
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a4aa90045def6d2f29bf7b7a416b5aeed}{}\label{namespacemain_a4aa90045def6d2f29bf7b7a416b5aeed}
+
+
+Get clicks on mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & \\
+\hline
+{\em state} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file main.\+py.
+
+\index{main@{main}!main@{main}}
+\index{main@{main}!main@{main}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_af613cea4cba4fb7de8e40896b3368945}{}\label{namespacemain_af613cea4cba4fb7de8e40896b3368945}
+
+
+Main function. 
+
+
+
+Definition at line 364 of file main.\+py.
+
+\index{main@{main}!mouse\+Drag@{mouse\+Drag}}
+\index{mouse\+Drag@{mouse\+Drag}!main@{main}}
+\subsubsection[{\texorpdfstring{mouse\+Drag(x, y)}{mouseDrag(x, y)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+mouse\+Drag (
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a33eac5e1e174927a801f847ff8c2d484}{}\label{namespacemain_a33eac5e1e174927a801f847ff8c2d484}
+
+
+Move the line used during the draw. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 118 of file main.\+py.
+
+\index{main@{main}!mouse\+Motion@{mouse\+Motion}}
+\index{mouse\+Motion@{mouse\+Motion}!main@{main}}
+\subsubsection[{\texorpdfstring{mouse\+Motion(x, y)}{mouseMotion(x, y)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+mouse\+Motion (
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_aac29b4e8c9fa3c64c062e76290492fb8}{}\label{namespacemain_aac29b4e8c9fa3c64c062e76290492fb8}
+
+
+Function to move polygons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 299 of file main.\+py.
+
+\index{main@{main}!my\+Keyboard\+Func@{my\+Keyboard\+Func}}
+\index{my\+Keyboard\+Func@{my\+Keyboard\+Func}!main@{main}}
+\subsubsection[{\texorpdfstring{my\+Keyboard\+Func(\+Key, x, y)}{myKeyboardFunc(Key, x, y)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+my\+Keyboard\+Func (
+\begin{DoxyParamCaption}
+\item[{}]{Key, }
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_aa99b6d3a6d32218b4f786b4b3e8bee92}{}\label{namespacemain_aa99b6d3a6d32218b4f786b4b3e8bee92}
+
+
+checks if the user has pressed a keyboard button 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & -\/ The key pressed \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file main.\+py.
+
+\index{main@{main}!my\+Reshape@{my\+Reshape}}
+\index{my\+Reshape@{my\+Reshape}!main@{main}}
+\subsubsection[{\texorpdfstring{my\+Reshape(w, h)}{myReshape(w, h)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+my\+Reshape (
+\begin{DoxyParamCaption}
+\item[{}]{w, }
+\item[{}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a5390b522a8b23c1fa7bb4ef88f44e0e7}{}\label{namespacemain_a5390b522a8b23c1fa7bb4ef88f44e0e7}
+
+
+Function to do the correct reshape of the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ Width of the window \\
+\hline
+{\em h} & -\/ Height of the window \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file main.\+py.
+
+\index{main@{main}!orientation@{orientation}}
+\index{orientation@{orientation}!main@{main}}
+\subsubsection[{\texorpdfstring{orientation(p, q, r)}{orientation(p, q, r)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+orientation (
+\begin{DoxyParamCaption}
+\item[{}]{p, }
+\item[{}]{q, }
+\item[{}]{r}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a462ff643e54edd543bfe037d02a1e43d}{}\label{namespacemain_a462ff643e54edd543bfe037d02a1e43d}
+
+
+Check orientation between 3 points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em 3} & points that will have their orientation calculated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file main.\+py.
+
+\index{main@{main}!poly\+Rotate@{poly\+Rotate}}
+\index{poly\+Rotate@{poly\+Rotate}!main@{main}}
+\subsubsection[{\texorpdfstring{poly\+Rotate(point)}{polyRotate(point)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+poly\+Rotate (
+\begin{DoxyParamCaption}
+\item[{}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_ae997bdd8d5e0cf367877b065573414d5}{}\label{namespacemain_ae997bdd8d5e0cf367877b065573414d5}
+
+
+Rotate the clicked polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 230 of file main.\+py.
+
+\index{main@{main}!poly\+Translate@{poly\+Translate}}
+\index{poly\+Translate@{poly\+Translate}!main@{main}}
+\subsubsection[{\texorpdfstring{poly\+Translate(polygon, point)}{polyTranslate(polygon, point)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+poly\+Translate (
+\begin{DoxyParamCaption}
+\item[{}]{polygon, }
+\item[{}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a848d152d3c07a537f3b10c10da6b9ada}{}\label{namespacemain_a848d152d3c07a537f3b10c10da6b9ada}
+
+
+Translate the clicked polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+{\em point} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 258 of file main.\+py.
+
+\index{main@{main}!render\+Scene@{render\+Scene}}
+\index{render\+Scene@{render\+Scene}!main@{main}}
+\subsubsection[{\texorpdfstring{render\+Scene()}{renderScene()}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+render\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a9258848a9cd7db8568ec88c7846c4768}{}\label{namespacemain_a9258848a9cd7db8568ec88c7846c4768}
+
+
+Function to render the scene. 
+
+
+
+Definition at line 339 of file main.\+py.
+
+
+
+\subsection{Variable Documentation}
+\index{main@{main}!active\+Polygon@{active\+Polygon}}
+\index{active\+Polygon@{active\+Polygon}!main@{main}}
+\subsubsection[{\texorpdfstring{active\+Polygon}{activePolygon}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+active\+Polygon = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_a07b342aae28b10571a2fec275af11d30}{}\label{namespacemain_a07b342aae28b10571a2fec275af11d30}
+
+
+Definition at line 35 of file main.\+py.
+
+\index{main@{main}!actual\+Lines@{actual\+Lines}}
+\index{actual\+Lines@{actual\+Lines}!main@{main}}
+\subsubsection[{\texorpdfstring{actual\+Lines}{actualLines}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+actual\+Lines = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_aa8e8bb4ccc8ddac3b8b3842e7218a252}{}\label{namespacemain_aa8e8bb4ccc8ddac3b8b3842e7218a252}
+
+
+Definition at line 51 of file main.\+py.
+
+\index{main@{main}!actual\+Point@{actual\+Point}}
+\index{actual\+Point@{actual\+Point}!main@{main}}
+\subsubsection[{\texorpdfstring{actual\+Point}{actualPoint}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+actual\+Point = {\bf Point}(0,0,0)}\hypertarget{namespacemain_a5f0756d4012f0ed8e06097d7de6b4f46}{}\label{namespacemain_a5f0756d4012f0ed8e06097d7de6b4f46}
+
+
+Definition at line 39 of file main.\+py.
+
+\index{main@{main}!all\+Points@{all\+Points}}
+\index{all\+Points@{all\+Points}!main@{main}}
+\subsubsection[{\texorpdfstring{all\+Points}{allPoints}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+all\+Points = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_a5fa631ef1beea1be0731dfac0c03e83e}{}\label{namespacemain_a5fa631ef1beea1be0731dfac0c03e83e}
+
+
+Definition at line 38 of file main.\+py.
+
+\index{main@{main}!all\+Polygons@{all\+Polygons}}
+\index{all\+Polygons@{all\+Polygons}!main@{main}}
+\subsubsection[{\texorpdfstring{all\+Polygons}{allPolygons}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+all\+Polygons = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_aefa0fded6ff7576348bd2abf3ab0f8a8}{}\label{namespacemain_aefa0fded6ff7576348bd2abf3ab0f8a8}
+
+
+Definition at line 36 of file main.\+py.
+
+\index{main@{main}!clicked@{clicked}}
+\index{clicked@{clicked}!main@{main}}
+\subsubsection[{\texorpdfstring{clicked}{clicked}}]{\setlength{\rightskip}{0pt plus 5cm}bool main.\+clicked = False}\hypertarget{namespacemain_adf37c1088b5a3b0bb91496b491b8a83c}{}\label{namespacemain_adf37c1088b5a3b0bb91496b491b8a83c}
+
+
+Definition at line 33 of file main.\+py.
+
+\index{main@{main}!current\+Poly@{current\+Poly}}
+\index{current\+Poly@{current\+Poly}!main@{main}}
+\subsubsection[{\texorpdfstring{current\+Poly}{currentPoly}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+current\+Poly = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_add5856c8a2f29c2a313d0a979f3f9386}{}\label{namespacemain_add5856c8a2f29c2a313d0a979f3f9386}
+
+
+Definition at line 40 of file main.\+py.
+
+\index{main@{main}!dragging@{dragging}}
+\index{dragging@{dragging}!main@{main}}
+\subsubsection[{\texorpdfstring{dragging}{dragging}}]{\setlength{\rightskip}{0pt plus 5cm}bool main.\+dragging = False}\hypertarget{namespacemain_afbd095805fe27d150b359c144b7ed863}{}\label{namespacemain_afbd095805fe27d150b359c144b7ed863}
+
+
+Definition at line 34 of file main.\+py.
+
+\index{main@{main}!drag\+Start@{drag\+Start}}
+\index{drag\+Start@{drag\+Start}!main@{main}}
+\subsubsection[{\texorpdfstring{drag\+Start}{dragStart}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+drag\+Start = {\bf Point}(0,0,0)}\hypertarget{namespacemain_a76ff6cc371da95e41b8b785e77bf79aa}{}\label{namespacemain_a76ff6cc371da95e41b8b785e77bf79aa}
+
+
+Definition at line 31 of file main.\+py.
+
+\index{main@{main}!line\+Aux@{line\+Aux}}
+\index{line\+Aux@{line\+Aux}!main@{main}}
+\subsubsection[{\texorpdfstring{line\+Aux}{lineAux}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+line\+Aux = {\bf Line}({\bf Point}(0,0,0))}\hypertarget{namespacemain_a8dd8e1c4bcedfacfff187452b92655c6}{}\label{namespacemain_a8dd8e1c4bcedfacfff187452b92655c6}
+
+
+Definition at line 50 of file main.\+py.
+
+\index{main@{main}!nails@{nails}}
+\index{nails@{nails}!main@{main}}
+\subsubsection[{\texorpdfstring{nails}{nails}}]{\setlength{\rightskip}{0pt plus 5cm}list main.\+nails = \mbox{[}$\,$\mbox{]}}\hypertarget{namespacemain_a184193594cc4348fd4f60c39b6a01fcc}{}\label{namespacemain_a184193594cc4348fd4f60c39b6a01fcc}
+
+
+Definition at line 37 of file main.\+py.
+
+\index{main@{main}!screenH@{screenH}}
+\index{screenH@{screenH}!main@{main}}
+\subsubsection[{\texorpdfstring{screenH}{screenH}}]{\setlength{\rightskip}{0pt plus 5cm}int main.\+screenH = 480}\hypertarget{namespacemain_ad8989b28561b60a2f903db7303bd7d2f}{}\label{namespacemain_ad8989b28561b60a2f903db7303bd7d2f}
+
+
+Definition at line 18 of file main.\+py.
+
+\index{main@{main}!screenW@{screenW}}
+\index{screenW@{screenW}!main@{main}}
+\subsubsection[{\texorpdfstring{screenW}{screenW}}]{\setlength{\rightskip}{0pt plus 5cm}int main.\+screenW = 640}\hypertarget{namespacemain_a985da8a132d11dcc00d693b5c6a62066}{}\label{namespacemain_a985da8a132d11dcc00d693b5c6a62066}
+
+
+Definition at line 17 of file main.\+py.
+
+\index{main@{main}!selected\+Poly@{selected\+Poly}}
+\index{selected\+Poly@{selected\+Poly}!main@{main}}
+\subsubsection[{\texorpdfstring{selected\+Poly}{selectedPoly}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+selected\+Poly = None}\hypertarget{namespacemain_a1db6f501c5570dc08a064510cb9e71a8}{}\label{namespacemain_a1db6f501c5570dc08a064510cb9e71a8}
+
+
+Definition at line 41 of file main.\+py.
+
+\index{main@{main}!show\+How\+To\+Use@{show\+How\+To\+Use}}
+\index{show\+How\+To\+Use@{show\+How\+To\+Use}!main@{main}}
+\subsubsection[{\texorpdfstring{show\+How\+To\+Use}{showHowToUse}}]{\setlength{\rightskip}{0pt plus 5cm}bool main.\+show\+How\+To\+Use = True}\hypertarget{namespacemain_a52a1046251ec3805410ab8f60b921d57}{}\label{namespacemain_a52a1046251ec3805410ab8f60b921d57}
+
+
+Definition at line 42 of file main.\+py.
+

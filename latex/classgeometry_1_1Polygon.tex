@@ -1,0 +1,228 @@
+\hypertarget{classgeometry_1_1Polygon}{}\section{geometry.\+Polygon Class Reference}
+\label{classgeometry_1_1Polygon}\index{geometry.\+Polygon@{geometry.\+Polygon}}
+
+
+In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight line segments, closing in a loop, to form a closed polygonal chain or circuit.  
+
+
+
+
+Inheritance diagram for geometry.\+Polygon\+:
+% FIG 0
+
+
+Collaboration diagram for geometry.\+Polygon\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgeometry_1_1Polygon_a46b21b7c846c26d6ff1171cc9a29d0c5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classgeometry_1_1Polygon_aa0fda1ff74a09b8498bd7d8731b2fbf1}{points})
+\item 
+def \hyperlink{classgeometry_1_1Polygon_a9c05f0f70dbb5652e29265671b036c71}{\+\_\+\+\_\+repr\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_ac597f93df5686912dc1ca6eddc65b6b8}{\+\_\+\+\_\+hash\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_ab790ce2e27479f63d26cf2fe0d177482}{\+\_\+\+\_\+setitem\+\_\+\+\_\+} (self, \hyperlink{classgeometry_1_1Polygon_aa0fda1ff74a09b8498bd7d8731b2fbf1}{points})
+\begin{DoxyCompactList}\small\item\em Calculating a Surface Normal for a triangle or a 3D polygon. \end{DoxyCompactList}\item 
+def \hyperlink{classgeometry_1_1Polygon_aa39e7d0353ffad956679321aca725d35}{comp\+Normal} (self)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_a64880abb26797d5ad564a6f0399b216c}{contains} (self, p)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_a4836c37e04dc0eb76809904538b77e7c}{is\+Convex} (self)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_ae4ab82f837783f51b39a41427e46f5df}{does\+Line\+Cross\+Polygon} (self, line)
+\item 
+def \hyperlink{classgeometry_1_1Polygon_a4c6914db65978bbd2232f28bbb41b69b}{ccw} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgeometry_1_1Polygon_a4491c008a2f035119ca3f56d38afd0cf}{n}
+\begin{DoxyCompactList}\small\item\em number of vertices \end{DoxyCompactList}\item 
+\hyperlink{classgeometry_1_1Polygon_aa0fda1ff74a09b8498bd7d8731b2fbf1}{points}
+\begin{DoxyCompactList}\small\item\em list of indexes of vertices \end{DoxyCompactList}\item 
+\hyperlink{classgeometry_1_1Polygon_a904adb19928f3de57ee46d4410c527e3}{normal}
+\begin{DoxyCompactList}\small\item\em normal vector of the given polygon \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight line segments, closing in a loop, to form a closed polygonal chain or circuit. 
+
+These segments are called its edges or sides, and the points where two edges meet are the polygon\textquotesingle{}s vertices (singular\+: vertex) or corners. \begin{DoxyVerb}A class representing a polygon.\end{DoxyVerb}
+ 
+
+Definition at line 355 of file geometry.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+(self, points)}{__init__(self, points)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{points}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_a46b21b7c846c26d6ff1171cc9a29d0c5}{}\label{classgeometry_1_1Polygon_a46b21b7c846c26d6ff1171cc9a29d0c5}
+\begin{DoxyVerb}Constructor. Throws an exception if less than three points are given.\end{DoxyVerb}
+ 
+
+Definition at line 358 of file geometry.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!\+\_\+\+\_\+hash\+\_\+\+\_\+@{\+\_\+\+\_\+hash\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+hash\+\_\+\+\_\+@{\+\_\+\+\_\+hash\+\_\+\+\_\+}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+hash\+\_\+\+\_\+(self)}{__hash__(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+\_\+\+\_\+hash\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_ac597f93df5686912dc1ca6eddc65b6b8}{}\label{classgeometry_1_1Polygon_ac597f93df5686912dc1ca6eddc65b6b8}
+\begin{DoxyVerb}The hash is a tuple of all points sorted on x.\end{DoxyVerb}
+ 
+
+Definition at line 381 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+repr\+\_\+\+\_\+(self)}{__repr__(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+\_\+\+\_\+repr\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_a9c05f0f70dbb5652e29265671b036c71}{}\label{classgeometry_1_1Polygon_a9c05f0f70dbb5652e29265671b036c71}
+\begin{DoxyVerb}String representation of this polygon.\end{DoxyVerb}
+ 
+
+Definition at line 371 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+setitem\+\_\+\+\_\+(self, points)}{__setitem__(self, points)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+\_\+\+\_\+setitem\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{points}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_ab790ce2e27479f63d26cf2fe0d177482}{}\label{classgeometry_1_1Polygon_ab790ce2e27479f63d26cf2fe0d177482}
+
+
+Calculating a Surface Normal for a triangle or a 3D polygon. 
+
+A surface normal for a triangle can be calculated by taking the vector cross product of two edges of that triangle. The order of the vertices used in the calculation will affect the direction of the normal (in or out of the face w.\+r.\+t. winding). Also you can use a Newell\textquotesingle{}s method for an arbitrary 3D polygon.
+
+\begin{DoxyReturn}{Returns}
+normal. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal}{\tt https\+://www.\+khronos.\+org/opengl/wiki/\+Calculating\+\_\+a\+\_\+\+Surface\+\_\+\+Normal} 
+\end{DoxySeeAlso}
+
+
+Definition at line 396 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!ccw@{ccw}}
+\index{ccw@{ccw}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{ccw(self)}{ccw(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+ccw (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_a4c6914db65978bbd2232f28bbb41b69b}{}\label{classgeometry_1_1Polygon_a4c6914db65978bbd2232f28bbb41b69b}
+\begin{DoxyVerb}Returns True if the points are provided in CCW order.\end{DoxyVerb}
+ 
+
+Definition at line 459 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!comp\+Normal@{comp\+Normal}}
+\index{comp\+Normal@{comp\+Normal}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{comp\+Normal(self)}{compNormal(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+comp\+Normal (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_aa39e7d0353ffad956679321aca725d35}{}\label{classgeometry_1_1Polygon_aa39e7d0353ffad956679321aca725d35}
+\begin{DoxyVerb}Newell's method for getting polygon normal.\end{DoxyVerb}
+ 
+
+Definition at line 399 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!contains@{contains}}
+\index{contains@{contains}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{contains(self, p)}{contains(self, p)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+contains (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_a64880abb26797d5ad564a6f0399b216c}{}\label{classgeometry_1_1Polygon_a64880abb26797d5ad564a6f0399b216c}
+\begin{DoxyVerb}Returns True if p is inside this polygon.
+
+   @see http://geomalgorithms.com/a03-_inclusion.html
+\end{DoxyVerb}
+ 
+
+Definition at line 412 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!does\+Line\+Cross\+Polygon@{does\+Line\+Cross\+Polygon}}
+\index{does\+Line\+Cross\+Polygon@{does\+Line\+Cross\+Polygon}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{does\+Line\+Cross\+Polygon(self, line)}{doesLineCrossPolygon(self, line)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+does\+Line\+Cross\+Polygon (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_ae4ab82f837783f51b39a41427e46f5df}{}\label{classgeometry_1_1Polygon_ae4ab82f837783f51b39a41427e46f5df}
+\begin{DoxyVerb}Returns whether this polygon is crossed by a given line.\end{DoxyVerb}
+ 
+
+Definition at line 454 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!is\+Convex@{is\+Convex}}
+\index{is\+Convex@{is\+Convex}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{is\+Convex(self)}{isConvex(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def geometry.\+Polygon.\+is\+Convex (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classgeometry_1_1Polygon_a4836c37e04dc0eb76809904538b77e7c}{}\label{classgeometry_1_1Polygon_a4836c37e04dc0eb76809904538b77e7c}
+\begin{DoxyVerb}Returns whether this polygon is convex.\end{DoxyVerb}
+ 
+
+Definition at line 436 of file geometry.\+py.
+
+
+
+\subsection{Member Data Documentation}
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!n@{n}}
+\index{n@{n}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{n}{n}}]{\setlength{\rightskip}{0pt plus 5cm}geometry.\+Polygon.\+n}\hypertarget{classgeometry_1_1Polygon_a4491c008a2f035119ca3f56d38afd0cf}{}\label{classgeometry_1_1Polygon_a4491c008a2f035119ca3f56d38afd0cf}
+
+
+number of vertices 
+
+
+
+Definition at line 365 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!normal@{normal}}
+\index{normal@{normal}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{normal}{normal}}]{\setlength{\rightskip}{0pt plus 5cm}geometry.\+Polygon.\+normal}\hypertarget{classgeometry_1_1Polygon_a904adb19928f3de57ee46d4410c527e3}{}\label{classgeometry_1_1Polygon_a904adb19928f3de57ee46d4410c527e3}
+
+
+normal vector of the given polygon 
+
+
+
+Definition at line 369 of file geometry.\+py.
+
+\index{geometry\+::\+Polygon@{geometry\+::\+Polygon}!points@{points}}
+\index{points@{points}!geometry\+::\+Polygon@{geometry\+::\+Polygon}}
+\subsubsection[{\texorpdfstring{points}{points}}]{\setlength{\rightskip}{0pt plus 5cm}geometry.\+Polygon.\+points}\hypertarget{classgeometry_1_1Polygon_aa0fda1ff74a09b8498bd7d8731b2fbf1}{}\label{classgeometry_1_1Polygon_aa0fda1ff74a09b8498bd7d8731b2fbf1}
+
+
+list of indexes of vertices 
+
+
+
+Definition at line 367 of file geometry.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{geometry_8py}{geometry.\+py}\end{DoxyCompactItemize}

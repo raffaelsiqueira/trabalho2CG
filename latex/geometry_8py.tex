@@ -1,0 +1,56 @@
+\hypertarget{geometry_8py}{}\section{geometry.\+py File Reference}
+\label{geometry_8py}\index{geometry.\+py@{geometry.\+py}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classgeometry_1_1Point}{geometry.\+Point}
+\begin{DoxyCompactList}\small\item\em Implements a 3D point or vector. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Line}{geometry.\+Line}
+\begin{DoxyCompactList}\small\item\em Two points define a straight line. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Polygon}{geometry.\+Polygon}
+\begin{DoxyCompactList}\small\item\em In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight line segments, closing in a loop, to form a closed polygonal chain or circuit. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Triangle}{geometry.\+Triangle}
+\begin{DoxyCompactList}\small\item\em A triangle is a polygon with three edges and three vertices. \end{DoxyCompactList}\item 
+class \hyperlink{classgeometry_1_1Box}{geometry.\+Box}
+\begin{DoxyCompactList}\small\item\em A bounging box is the smallest rectangle, aligned with the coordinate axes, which contain a given set of points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacegeometry}{geometry}
+\begin{DoxyCompactList}\small\item\em Classes and geometric utilities commonly used in computational geometry, such as\+: point, line, polygon, triangle and box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegeometry_a826edf3113b2277f596bc7927da2fd4e}{geometry.\+ccw3} (A, B, C, N)
+\item 
+def \hyperlink{namespacegeometry_ad67511f31b70990660efd63da577f482}{geometry.\+ccw} (A, B, C)
+\item 
+def \hyperlink{namespacegeometry_a3df8ee137b8d01576f14084dee3a6a91}{geometry.\+intersect} (a1, b1, a2, b2)
+\item 
+def \hyperlink{namespacegeometry_a118331eb1c38459dd57dad62f75abea5}{geometry.\+close} (a, b, epsilon=E\+PS)
+\item 
+def \hyperlink{namespacegeometry_acaccff5b694d39c9db5072c671c6568b}{geometry.\+shortest\+Path\+To\+Line} (self, that)
+\begin{DoxyCompactList}\small\item\em Calculate the line segment Pa\+Pb that is the shortest route between two lines P1\+P2 and P3\+P4. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_a96071e09708da91677cc86ea91705f5e}{geometry.\+distance\+To\+Line} (self, that)
+\item 
+def \hyperlink{namespacegeometry_afe255f1239fc866c1c2c04b30c37b696}{geometry.\+intersection} (self, that)
+\item 
+def \hyperlink{namespacegeometry_aa7e72b904b344b7d45b75f3942bc618b}{geometry.\+midpoint} (self)
+\item 
+def \hyperlink{namespacegeometry_a08506b08fe50ecd6e3c7098f63178881}{geometry.\+intersect\+To\+Plane} (self, poly)
+\item 
+def \hyperlink{namespacegeometry_a7c89848bc4970d590b82641648503bd9}{geometry.\+area} (self)
+\begin{DoxyCompactList}\small\item\em Calculates the area of a planar polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_a9453ec6bad9d4ba50724a4df0b1a74ed}{geometry.\+distance} (self, p)
+\begin{DoxyCompactList}\small\item\em Returns the distance of a given point to the plane of this polygon. \end{DoxyCompactList}\item 
+def \hyperlink{namespacegeometry_ac7327d8cae2a771c06a0ded4c91ab4a7}{geometry.\+interior\+Point} (self)
+\item 
+def \hyperlink{namespacegeometry_ac3bf912ad06b884d2c21a3f91cf7c392}{geometry.\+exterior\+Point} (self)
+\item 
+def \hyperlink{namespacegeometry_a284499afed4bfe4096ca1c78062a16bb}{geometry.\+main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{namespacegeometry_a543db87a5e9af9e1d17146559a540276}{geometry.\+E\+PS} = 0.\+001
+\begin{DoxyCompactList}\small\item\em Tolerance used for checking equalities. \end{DoxyCompactList}\end{DoxyCompactItemize}

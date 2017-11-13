@@ -13,6 +13,16 @@ from matrix import *
 screenW = 640 
 screenH = 480
 
+class myPolygon(Polygon):
+	def __init__(self, points, r, g, b):
+		super(myPolygon, self).__init__(points)
+		self.r = r
+		self.g = g
+		self.b = b
+		self.parents = []
+		self.children = []
+		self.nails = []
+
 dragStart = Point(0,0,0)
 
 clicked = False
@@ -24,6 +34,7 @@ allPoints = []
 actualPoint = Point(0,0,0)
 currentPoly = []
 selectedPoly = None
+showHowToUse = True
 
 class Line:
 	def __init__(self, pontoA):
@@ -34,6 +45,9 @@ tempLine = Line(Point(0,0,0))
 actualLines = []
 
 def changeSize(w, h):
+	global screenW
+	global screenH
+
 	if(h == 0):
 	       h = 1
 
@@ -41,6 +55,7 @@ def changeSize(w, h):
 
 	glMatrixMode(GL_PROJECTION)
 	glLoadIdentity()
+
 
 	screenW = w
 	screenH = h
@@ -68,6 +83,14 @@ def doIntersect(l1, l2):
 		return True
 	else:
 		return False
+
+
+def myKeyboardFunc(Key, x ,y):
+	if Key == 'h':
+		print 'How to use:'
+		print 'Draw polygons with the mouse click'
+		print 'Create nails between polygons by right-clicking'
+		print 'To delete a nail click on it with the right button'
 
 
 def mouseDrag(x, y):
@@ -101,28 +124,21 @@ def getMouse(button, state, x, y):
 
 		if len(actualLines) == 0 and tempLine.pontoA.x != tempLine.pontoB.x and tempLine.pontoA.y != tempLine.pontoB.y:
 			actualLines.append(tempLine)
-			print tempLine.pontoA, tempLine.pontoB
-			print('Linha zero adicionada')
 		else:
 			if len(actualLines) > 0:
 				for i,line in enumerate(actualLines):
-					print i, len(actualLines) - 1
 					if i != len(actualLines)-1:
-						print 'Linhas:'
-						print tempLine.pontoA, tempLine.pontoB
-						print line.pontoA, line.pontoB
 						if doIntersect(line, tempLine) and i!=0:
-							raise('Self intersections is not allowed')
+							raise ValueError('Self intersections is not allowed')
 						elif doIntersect(line, tempLine) and i==0:
-							print 'intersecao com a primeira linha'
 							if line.pontoA.dist(tempLine.pontoB) >= 20:
-								raise('Self intersections is not allowed')
+								raise ValueError('Self intersections is not allowed')
 							tempLine.pontoB.x = line.pontoA.x + 1
 							tempLine.pontoB.y = line.pontoA.y + 1
 							actualPoint.x = line.pontoA.x + 1
 							actualPoint.y = line.pontoA.y + 1
 				actualLines.append(tempLine)
-				print('Linha ', len(actualLines)-1, ' adicionada')
+				
 			
 		clicked = True
 		tempLine = Line(actualPoint)
@@ -134,17 +150,17 @@ def getMouse(button, state, x, y):
 			clicked = False
 			actualLines.append(tempLine)
 			tempLine = Line(Point(0,0,0))
-			poly = Polygon(activePolygon[:], numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0))
-			if(poly.isConvex()):
-				print("Convexo")
+			poly = myPolygon(activePolygon[:], numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0), numpy.random.uniform(0.0, 1.0))
+			
+				
 			tessellate(poly)
-			print("Adicionou Polygon\n")
+			
 			allPolygons.append(poly)
 			del actualLines[:]
 			del activePolygon[:]
 
 	elif (button == GLUT_RIGHT_BUTTON and state == GLUT_DOWN):
-		print 'botao direito'
+		
 		firstPolygon = True
 		children = []
 		parent = None
@@ -242,26 +258,6 @@ def mouseMotion(x,y):
 		elif(not selectedPoly.parents):
 			translatePolygon(selectedPoly, point)
 
-	"""global dragStart
-	actualDrag = Point(x,y,0)
-	if selectedPoly:
-		distx = x - dragStart.x
-		disty = y - dragStart.y
-
-		points = selectedPoly.points
-		#print "OLD: ", points
-		for point in points:
-			#print "OLD: ", point.x, point.y
-			point.x += distx
-			point.y += disty
-			#print point.x, point.y
-
-		selectedPoly.__setitem__(points)
-		#print selectedPoly.points
-
-		dragStart.x = x
-		dragStart.y = y"""
-
 def drawTempLines():
 	glLineWidth(3.0)
 	glBegin(GL_LINES)
@@ -285,12 +281,20 @@ def drawNails(polygon):
 	glPointSize(10.0)
 	glBegin(GL_POINTS)
 	for nail in polygon.nails:
-		glColor3f(0.3,0.3,0.3)
+		glColor3f(0,0,0)
 		glVertex3f(nail.x, nail.y, 0.0)
 	glEnd()
 
 
 def renderScene ():
+	global showHowToUse
+
+	if showHowToUse:
+		print 'How to use:'
+		print 'Draw polygons with the mouse click'
+		print 'Create nails between polygons by right-clicking'
+		print 'To delete a nail click on it with the right button'
+		showHowToUse = False
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glEnable(GL_POINT_SMOOTH)
 	glEnable(GL_LINE_SMOOTH)
@@ -312,10 +316,11 @@ def main():
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA)
 	glutInitWindowPosition(100,100)
 	glutInitWindowSize(screenW,screenH)
-	glutCreateWindow("Trabalho 2 - CG")
+	glutCreateWindow("Trabalho 2 - CG 2017.2 - Raffael SIqueira")
 	glClearColor(255.0,255.0,255.0,0.0)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glutSwapBuffers()
+	glutKeyboardFunc(myKeyboardFunc)
 	glutMouseFunc(getMouse)
 	glutMotionFunc(mouseMotion)
 	glutPassiveMotionFunc(mouseDrag)

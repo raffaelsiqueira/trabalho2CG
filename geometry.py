@@ -355,7 +355,7 @@ class Line(object):
 class Polygon(object):
     """A class representing a polygon."""
 
-    def __init__(self, points, r, g, b):
+    def __init__(self, points):
         """Constructor. Throws an exception if less than three points are given."""
 
         if len(points) < 3:
@@ -367,14 +367,6 @@ class Polygon(object):
         self.points = points
         ## normal vector of the given polygon
         self.normal = self.compNormal().normalize()
-
-        self.r = r
-        self.g = g
-        self.b = b
-
-        self.parents = []
-        self.children = []
-        self.nails = []
         
     def __repr__(self):
         """String representation of this polygon.""" 

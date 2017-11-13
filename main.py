@@ -37,9 +37,9 @@ selectedPoly = None
 showHowToUse = True
 
 class Line:
-	def __init__(self, pontoA):
-		self.pontoA = pontoA
-		self.pontoB = Point(pontoA.x, pontoA.y,0)
+	def __init__(self, pointA):
+		self.pointA = pointA
+		self.pointB = Point(pointA.x, pointA.y,0)
 
 tempLine = Line(Point(0,0,0))
 actualLines = []
@@ -74,16 +74,15 @@ def orientation(p, q, r):
 		return 2
 
 def doIntersect(l1, l2):
-	o1 = orientation(l1.pontoA, l1.pontoB, l2.pontoA)
-	o2 = orientation(l1.pontoA, l1.pontoB, l2.pontoB)
-	o3 = orientation(l2.pontoA, l2.pontoB, l1.pontoA)
-	o4 = orientation(l2.pontoA, l2.pontoB, l1.pontoB)
+	o1 = orientation(l1.pointA, l1.pointB, l2.pointA)
+	o2 = orientation(l1.pointA, l1.pointB, l2.pointB)
+	o3 = orientation(l2.pointA, l2.pointB, l1.pointA)
+	o4 = orientation(l2.pointA, l2.pointB, l1.pointB)
 
 	if o1 != o2 and o3 != o4:
 		return True
 	else:
 		return False
-
 
 def myKeyboardFunc(Key, x ,y):
 	if Key == 'h':
@@ -95,8 +94,8 @@ def myKeyboardFunc(Key, x ,y):
 
 def mouseDrag(x, y):
 	if(clicked):
-		tempLine.pontoB.x = x
-		tempLine.pontoB.y = y
+		tempLine.pointB.x = x
+		tempLine.pointB.y = y
 	glutPostRedisplay()
 
 def getMouse(button, state, x, y):
@@ -113,7 +112,7 @@ def getMouse(button, state, x, y):
 	actualPoint = Point(x,y,0)
 
 	if (button == GLUT_LEFT_BUTTON and state == GLUT_DOWN):
-		if len(actualLines) == 0 and tempLine.pontoA.x == 0 and tempLine.pontoA.y == 0:
+		if len(actualLines) == 0 and tempLine.pointA.x == 0 and tempLine.pointA.y == 0:
 			for poly in allPolygons:
 				if poly.contains(actualPoint):
 					selectedPoly = poly
@@ -122,7 +121,7 @@ def getMouse(button, state, x, y):
 				dragStart = actualPoint
 				return
 
-		if len(actualLines) == 0 and tempLine.pontoA.x != tempLine.pontoB.x and tempLine.pontoA.y != tempLine.pontoB.y:
+		if len(actualLines) == 0 and tempLine.pointA.x != tempLine.pointB.x and tempLine.pointA.y != tempLine.pointB.y:
 			actualLines.append(tempLine)
 		else:
 			if len(actualLines) > 0:
@@ -131,12 +130,12 @@ def getMouse(button, state, x, y):
 						if doIntersect(line, tempLine) and i!=0:
 							raise ValueError('Self intersections is not allowed')
 						elif doIntersect(line, tempLine) and i==0:
-							if line.pontoA.dist(tempLine.pontoB) >= 20:
+							if line.pointA.dist(tempLine.pointB) >= 20:
 								raise ValueError('Self intersections is not allowed')
-							tempLine.pontoB.x = line.pontoA.x + 1
-							tempLine.pontoB.y = line.pontoA.y + 1
-							actualPoint.x = line.pontoA.x + 1
-							actualPoint.y = line.pontoA.y + 1
+							tempLine.pointB.x = line.pointA.x + 1
+							tempLine.pointB.y = line.pointA.y + 1
+							actualPoint.x = line.pointA.x + 1
+							actualPoint.y = line.pointA.y + 1
 				actualLines.append(tempLine)
 				
 			
@@ -179,17 +178,23 @@ def getMouse(button, state, x, y):
 					children.append(poly)
 			if children:
 				if removeNail:
-					nails.remove(removeNail)
+					if removeNail in nails:
+						nails.remove(removeNail)
 					for child in children:
-						parent.children.remove(child)
-						child.parents.remove(parent)
-						child.nails.remove(removeNail)
+						if child in parent.children:
+							parent.children.remove(child)
+						if parent in child.parents:
+							child.parents.remove(parent)
+						if removeNail in child.nails:
+							child.nails.remove(removeNail)
 				else:
 					nails.append(nail)
 					parent.children += children
 					for child in children:
-						child.parents.append(parent)
-						child.nails.append(nail)
+						if not child.parents:
+							child.parents.append(parent)
+						if not child.nails:
+							child.nails.append(nail)
 		
 
 def rotatePolygon(point):
@@ -253,24 +258,24 @@ def mouseMotion(x,y):
 	global dragStart
 	point = Point(x,y,0)
 	if(selectedPoly is not None):
-		if(selectedPoly.parents and len(selectedPoly.nails) == 1):
+		if selectedPoly.parents and len(selectedPoly.nails) >= 1:
 			rotatePolygon(point)
-		elif(not selectedPoly.parents):
+		elif not selectedPoly.parents:
 			translatePolygon(selectedPoly, point)
 
 def drawTempLines():
-	glLineWidth(3.0)
+	glLineWidth(1.5)
 	glBegin(GL_LINES)
 	for i in range(1, len(activePolygon)):
 		glColor3f(0, 0, 0)
 		glVertex3f(activePolygon[i-1].x, activePolygon[i-1].y, 0.0)
 		glVertex3f(activePolygon[i].x, activePolygon[i].y, 0.0)
 	glEnd()
-	glLineWidth(3.0)
+	glLineWidth(1.5)
 	glBegin(GL_LINES)
 	glColor3f(0, 0, 0)
-	glVertex3f(tempLine.pontoA.x, tempLine.pontoA.y, 0.0)
-	glVertex3f(tempLine.pontoB.x, tempLine.pontoB.y, 0.0)
+	glVertex3f(tempLine.pointA.x, tempLine.pointA.y, 0.0)
+	glVertex3f(tempLine.pointB.x, tempLine.pointB.y, 0.0)
 	glEnd()
 
 def drawPolygon(polygon):
@@ -316,7 +321,7 @@ def main():
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA)
 	glutInitWindowPosition(100,100)
 	glutInitWindowSize(screenW,screenH)
-	glutCreateWindow("Trabalho 2 - CG 2017.2 - Raffael SIqueira")
+	glutCreateWindow("Trabalho 2 - CG 2017.2 - Raffael Siqueira")
 	glClearColor(255.0,255.0,255.0,0.0)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glutSwapBuffers()
@@ -331,4 +336,6 @@ def main():
 
 			
 
-if __name__ == '__main__': main()
+if __name__ == '__main__': 
+	print 'Press H for help'
+	main()
